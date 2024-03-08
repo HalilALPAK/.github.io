@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+       .carkifelek{
+         width: 400px;
+         height: 400px;
+         background-color: black;
+         display: flex;
+         flex-wrap: wrap;
+         border-radius: 100%;
+         transition: all 5s;
+       }
+       .ok {
+            width: 20px;
+            height: 20px;
+            clip-path: polygon(0% 0%, 100% 0%, 70% 100%);
+            background-color: red;
+            transform-origin: 100% 100%;
+            border-radius: 70% 70% 0 0;
+            margin: 0 200px 0 185px;
+        }
+        .bolum {
+            width: 50%;
+            height: 50%;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+            background-color: red;
+            transform-origin: 100% 100%;
+            border-radius: 100% 0 0 0;
+        }
+        .bolum2 {
+            width: 50%;
+            height: 50%;
+            clip-path: polygon(0% 0%, 100% 0, 0% 100%);
+            background-color: blue;
+            transform-origin: 100% 100%;
+            border-radius: 0% 100% 0 0;
+        }
+        .bolum3 {
+            width: 50%;
+            height: 50%;
+            clip-path: polygon(0% 0%, 100% 0, 0% 100%);
+            background-color: yellow;
+            transform-origin: 100% 100%;
+            border-radius: 0% 0 0 100%;
+        }
+        .bolum4 {
+            width: 50%;
+            height: 50%;
+            clip-path: polygon(0% 0%, 100% 100%, 0 100%);
+            background-color: blueviolet;
+            transform-origin: 100% 100%;
+            border-radius: 0% 0 100% 0;
+        }
+        button{
+         margin: 50px 130px 0 ;
+         width: 100px;
+         height: 40px;
+         border-radius: 10px;
+         background-color: violet;
+        }
+    </style>
+    <title>Çarkıfelek</title>
+</head>
+<body>
+     <div class="ok"></div>
+    <div class="carkifelek">
+        <div class="bolum"></div>
+        <div class="bolum2"></div>
+        <div class="bolum3"></div>
+        <div class="bolum4"></div>
+        
+    </div>
+    <button id="rotateButton">döndür</button>
+    <script>
+      const button = document.getElementById("rotateButton");
+      const carkifelek = document.querySelector(".carkifelek");
+  
+      const initialTransform = "rotateZ(0deg)";
+    carkifelek.style.transition = "all 3s";
+    button.addEventListener("click", () => {
+        const randomDegree = Math.floor((Math.random() * 1920)+360);
+        carkifelek.style.transform = `rotateZ(${randomDegree}deg)`;
+        setTimeout(() => {
+         const kalan = randomDegree % 360;
+        if (0 <= kalan && kalan < 45) {
+            alert('liverpool');
+        } else if (90 <= kalan && kalan <= 135) {
+            alert('real-madrid');
+        } 
+        else if (45 <= kalan && kalan < 90) {
+            alert('PSG');
+        }
+        else if (135 < kalan && kalan <= 180) {
+            alert('real-madrid');
+        }else if (180 < kalan && kalan <= 225) {
+            alert('barça');
+        } else if (315 <= kalan && kalan <= 359) {
+            alert('city');
+        } else {
+            alert('juventus');
+        }
+            carkifelek.style.transition = "all 1s";
+            carkifelek.style.transform = initialTransform;
+        }, 4000);
+    });
+    
+  </script>
+</body>
+</html>
